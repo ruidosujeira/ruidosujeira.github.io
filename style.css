@@ -1,392 +1,77 @@
-:root {
-    --bg: #050505;
-    --text: #e0e0e0;
-    --text-dim: #666;
-    --accent: #fff;
-    --font-sans: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --easing: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
-    cursor: none;
-    /* Custom cursor */
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: var(--font-sans);
-    overflow: hidden;
-    /* Canvas handles background */
-    width: 100vw;
-    height: 100vh;
+    background: #0a0a14;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Space Mono', monospace;
+    overflow: hidden;
 }
 
-/* Canvas Background */
-#canvas {
+#stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
-    pointer-events: none;
 }
 
-/* Layout */
 main {
     position: relative;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
-    width: 100%;
-    max-width: 600px;
-    padding: 2rem;
-    mix-blend-mode: difference;
-    /* Interaction with white particles */
-}
-
-/* Typography & Glitch Effect */
-.hero {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.glitch-wrapper {
-    position: relative;
-}
-
-.glitch {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--text);
-    position: relative;
-}
-
-.subtitle {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    color: var(--text-dim);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-left: 0.2rem;
-}
-
-/* Stack Bars */
-.stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.stack-item {
-    display: flex;
     align-items: center;
-    gap: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
+    gap: 3rem;
+}
+
+.name {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
     opacity: 0;
-    animation: slideUp 0.8s var(--easing) forwards;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 0.5s;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
 }
 
-.stack-item:nth-child(1) {
-    animation-delay: 0.2s;
+.github-link {
+    width: 40px;
+    height: 40px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.4s ease;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 1s;
 }
 
-.stack-item:nth-child(2) {
-    animation-delay: 0.3s;
+.github-link:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
 }
 
-.stack-item:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.lang {
-    width: 100px;
-    color: var(--text-dim);
-}
-
-.bar {
-    height: 2px;
-    background: var(--text-dim);
-    width: 0;
-    position: relative;
-    transition: width 1.5s var(--easing);
-    animation: growBar 1.5s var(--easing) 0.5s forwards;
-}
-
-.bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+.github-link svg {
     width: 100%;
-    background: var(--color);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
+    height: 100%;
 }
 
-.stack-item:hover .bar::after {
-    transform: scaleX(1);
-}
-
-.stack-item:hover .lang {
-    color: var(--text);
-}
-
-@keyframes growBar {
-    to {
-        width: var(--progress);
-    }
-}
-
-@keyframes slideUp {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Footer / Links */
-.contact {
-    margin-top: auto;
-    opacity: 0;
-    animation: fadeIn 1s ease 1s forwards;
-}
-
-.link {
-    text-decoration: none;
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-}
-
-.link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--text);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s var(--easing);
-}
-
-.link:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.link-arrow {
-    transition: transform 0.3s var(--easing);
-}
-
-.link:hover .link-arrow {
-    transform: translate(2px, -2px);
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Custom Cursor */
-.cursor {
-    width: 8px;
-    height: 8px;
-    background: var(--text);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 100;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-}
-
-.cursor-follower {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--text-dim);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 99;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-    mix-blend-mode: difference;
-}
-
-/* Hover states for cursor */
-body:has(a:hover) .cursor-follower,
-body:has(.stack-item:hover) .cursor-follower {
-    transform: translate(-50%, -50%) scale(1.5);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: transparent;
-}
-
-/* Command Palette */
-.cmd-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 200;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 15vh;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-}
-
-.cmd-overlay.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.cmd-modal {
-    width: 100%;
-    max-width: 600px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #333;
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    transform: scale(0.95);
-    transition: transform 0.2s var(--easing);
-}
-
-.cmd-overlay.visible .cmd-modal {
-    transform: scale(1);
-}
-
-.cmd-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #333;
-}
-
-#cmd-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    outline: none;
-}
-
-#cmd-input::placeholder {
-    color: var(--text-dim);
-}
-
-.cmd-esc {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    border: 1px solid #333;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-#cmd-list {
-    list-style: none;
-    max-height: 300px;
-    overflow-y: auto;
-    padding: 0.5rem;
-}
-
-.cmd-item {
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--text-dim);
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: all 0.1s ease;
-}
-
-.cmd-item.selected,
-.cmd-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text);
-}
-
-.cmd-item-icon {
-    margin-right: 0.75rem;
-    width: 16px;
-    height: 16px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cmd-item-shortcut {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    opacity: 0.5;
-}
-
-/* Footer Hint */
-.contact {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.cmd-hint {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    opacity: 0.5;
-}
-
-.cmd-key {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
 }

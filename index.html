@@ -1,34 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ruidosujeira - Portfolio">
-    <meta name="theme-color" content="#0a0a14">
-    <title>ruidosujeira</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocco • ruidosujeira</title>
+  <meta name="description" content="Rocco — Shipping tools. Developer focused on building tools for developers.">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <canvas id="stars"></canvas>
+  <!-- Living Cells Night Sky Canvas -->
+  <canvas id="sky"></canvas>
 
-    <main>
-        <h1 class="name">ruidosujeira</h1>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">rocco</a>
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#work">work</a>
+        <a href="#connect">connect</a>
+      </div>
+    </div>
+  </nav>
 
-        <a href="https://github.com/ruidosujeira" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub Profile">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">developer • tools</div>
+      <h1>Rocco</h1>
+      <p class="tagline">Shipping tools.<br>Building useful things for developers.</p>
+
+      <div class="hero-actions">
+        <a href="https://github.com/ruidosujeira" target="_blank" rel="noopener" class="btn btn-primary">
+          <span>View on GitHub</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
         </a>
-    </main>
+        <a href="#work" class="btn btn-secondary">View projects</a>
+      </div>
 
-    <script src="main.js"></script>
+      <div class="meta">
+        <span>21 followers</span>
+        <span class="dot"></span>
+        <span>35 public repositories</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">01</span>
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <p class="about-text">
+          I build tools. Focused on developer experience, clean code, and 
+          solutions that genuinely help people work better.
+        </p>
+        <p class="about-text">
+          Currently exploring frameworks, CLI tools, automation, and libraries 
+          to create modern and productive experiences.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work / Projects -->
+  <section id="work" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">02</span>
+        <h2>Work</h2>
+      </div>
+      
+      <div id="projects" class="projects-grid">
+        <!-- Populated via script.js from GitHub API -->
+        <div class="project-skeleton"></div>
+        <div class="project-skeleton"></div>
+        <div class="project-skeleton"></div>
+        <div class="project-skeleton"></div>
+      </div>
+
+      <div class="projects-footer">
+        <a href="https://github.com/ruidosujeira?tab=repositories" target="_blank" rel="noopener" class="btn btn-ghost">
+          View all repositories →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect -->
+  <section id="connect" class="section">
+    <div class="container connect-container">
+      <div class="section-header">
+        <span class="label">03</span>
+        <h2>Connect</h2>
+      </div>
+      
+      <p class="connect-text">Always open to conversations about tools, code, and ideas.</p>
+
+      <a href="https://github.com/ruidosujeira" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+        <span>github.com/ruidosujeira</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      </a>
+
+      <div class="connect-meta">
+        <a href="https://www.iamrocco.me" target="_blank" rel="noopener">iamrocco.me</a>
+        <span class="dot"></span>
+        <span>hireable</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Made with cells and stars. © <span id="year"></span> Rocco</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
